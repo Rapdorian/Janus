@@ -1,0 +1,18 @@
+[package]
+name = "janus"
+version = "0.1.0"
+authors = ["James Pruitt <jamescpruitt@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+wgpu = "0.6.0"
+winit = "0.22.2"
+futures = "0.3.5"
+bytemuck = "1.4.1"
+ultraviolet = "0.7.1"
+nom = "5.1.2"
+rgb = "0.8.25"
+
+[build-dependencies]
+shaderc = "0.6.2"
+anyhow = "1.0.32"
