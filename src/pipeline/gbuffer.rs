@@ -230,14 +230,14 @@ impl GBufferPipeline {
                         format: TextureFormat::Rgba16Float,
                         alpha_blend: BlendDescriptor::REPLACE,
                         color_blend: BlendDescriptor::REPLACE,
-                        write_mask: ColorWrite::COLOR,
+                        write_mask: ColorWrite::ALL,
                     },
                     // normals
                     ColorStateDescriptor {
                         format: TextureFormat::Rgba16Float,
                         alpha_blend: BlendDescriptor::REPLACE,
                         color_blend: BlendDescriptor::REPLACE,
-                        write_mask: ColorWrite::COLOR,
+                        write_mask: ColorWrite::ALL,
                     },
                     // albedo/specular
                     ColorStateDescriptor {
@@ -406,13 +406,13 @@ fn create_tex(device: &Device, width: u32, height: u32) -> (Texture, TextureView
         sample_count: 1,
         dimension: TextureDimension::D2,
         format: TextureFormat::Rgba16Float,
-        usage: TextureUsage::OUTPUT_ATTACHMENT | TextureUsage::SAMPLED | TextureUsage::STORAGE,
+        usage: TextureUsage::OUTPUT_ATTACHMENT | TextureUsage::SAMPLED,
     });
 
     let view = tex.create_view(&wgpu::TextureViewDescriptor {
         label: None,
         format: Some(TextureFormat::Rgba16Float),
-        dimension: None,
+        dimension: Some(TextureViewDimension::D2),
         aspect: wgpu::TextureAspect::All,
 
         base_mip_level: 0,

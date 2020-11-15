@@ -11,8 +11,8 @@ void main() {
     //vec2 pos = vec2(clamp(a_pos.x, 0.0, 1.0), clamp(a_pos.y, 0.0, 1.0));
     
     vec3 light_pos = vec3(0.0, 0.0, -20.0);
-
     vec2 pos = (a_pos + vec2(1.0, 1.0)) / 2.0;
+    pos = pos * textureSize(g_col, 0);
     vec3 col = texture(g_col, pos).rgb;
     vec3 lpos = texture(g_pos, pos).rgb;
     
@@ -24,7 +24,7 @@ void main() {
     //power = clamp(floor(power * 3) / 3, 0.0, 1.0);
     //power = clamp(round(100 * power), 0, 5) / 5;
     //power += 0.001;
-    o_col = vec4(col.rgb * power, 1.0);
+    o_col = vec4(col * power, 1.0);
     //o_col = vec4(dist, dist, dist, 1.0);
     //o_col = vec4((lpos-light_pos) / 20.0, 1.0);
     //o_col = vec4(1.0, 1.0, 1.0, 0.0);
